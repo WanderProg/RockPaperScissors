@@ -1,85 +1,48 @@
-// Create array with the 3 Choices
-// Create a new function named getComputerChoice
-// let function getComputerChoice return either 'Rock', 'Paper', or 'Scissors' randomly
+const computerChoiceDisplay = document.getElementById('computer-choice');
+const userChoiceDisplay = document.getElementById('user-choice');
+const resultDisplay = document.getElementById('result');
+const btn = document.querySelectorAll('button');
+let userChoice;
+let computerChoice;
+let result;
 
-const options = ["rock", "paper", "scissors"];
 
-const getComputerChoice = () => {
-  const choice = options[Math.floor(Math.random() * options.length)];
-  return choice;
-};
+btn.forEach(btn => btn.addEventListener('click', (e) =>{
+    userChoice = e.target.id;
+    userChoiceDisplay.innerHTML  = userChoice;
+    generateComputerChoice();
+    getResult();
+}))
 
-getComputerChoice();
-
-const checkWinner = (playerSelection, computerSelection) => {
-    if (playerSelection == computerSelection) {
-        return "Tie";
-    } else if (
-    (playerSelection == "rock" && computerSelection == "scissors") ||
-    (playerSelection == "paper" && computerSelection == "rock") ||
-    (playerSelection == "scissors" && computerSelection == "paper")
-    ){
-        return "Player";
+function generateComputerChoice() {
+    const randomChoice = Math.floor(Math.random() * btn.length);
+    if(randomChoice === 0){
+        computerChoice = 'rock'
     }
-    else {
-        return "Computer";
-    }
-}
-    
-
-const playRound = (playerSelection, computerSelection) => {
-    const result = checkWinner(playerSelection, computerSelection);
-    if(result == "Tie"){
-        return "It's a tie"
-    }
-    else if (result == "Player"){
-        return `You win, ${playerSelection} beats ${computerSelection}`
+    else if(randomChoice === 1){
+        computerChoice = 'paper'
     }
     else{
-        return `You lose, ${computerSelection} beats ${playerSelection}`
+        computerChoice = 'scissors'
     }
+    computerChoiceDisplay.innerHTML = computerChoice;
 }
 
-const getPlayerChoice = () => {
-    let validatedInput = false;
-    while(validatedInput == false){
-        const choice = prompt("Rock, paper or scissors");
-        if(choice == null){
-            continue;
-        }
-        const inLowerCase = choice.toLowerCase();
-        if(options.includes(inLowerCase)){
-            validatedInput = true;
-            return inLowerCase;
-        }
+function getResult() {
+    if(computerChoice === userChoice) {
+        result = `it's a draw`
     }
-}
-
-const game = () => {
-    let playerScore = 0;
-    let computerScore = 0;
-    console.log("welcome!");
-    for(let i = 0; i < 5; i++) {
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-            console.log(playRound(playerSelection, computerSelection));
-        if(checkWinner(playerSelection, computerSelection) == "Player"){
-        playerScore++
-        }    
-        else if(checkWinner(playerSelection,computerSelection) == "Computer"){
-        computerScore++
-        }
-    }   
-    console.log("Game over!")
-    if(playerScore > computerScore){
-        console.log("Player wins")
+    if(computerChoice === 'scissors' && userChoice === 'paper') {
+        result = `you lost!`
     }
-    else if(computerScore > playerScore){
-        console.log("Computer wins")
+    if(computerChoice === 'paper' && userChoice === 'rock') {
+        result = `you lost!`
+    }
+    if(computerChoice === 'rock' && userChoice === 'scissors') {
+        result = `you lost!`
     }
     else{
-        console.log("We have a tie")
+        result = `you won!`
     }
+    resultDisplay.innerHTML = result;
 }
-
-game()
