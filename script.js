@@ -2,64 +2,43 @@ const rock = document.querySelector(".rock")
 const paper = document.querySelector(".paper")
 const scissors = document.querySelector(".scissors")
 
-const playerChoiceColumn = document.querySelector(".colomn1");
-const computerChoiceColumn = document.querySelector(".colomn2");
-const winnerColumn = document.querySelector(".colomn3");
+const column1 = document.querySelector(".column1")
+const column2 = document.querySelector(".column2")
+const column3 = document.querySelector(".column3")
 
-const playerScoreElement = document.querySelector(".Player-score")
-const computerScoreElement = document.querySelector(".Computer-score")
+// Write a function that appends the emoji of chosen button to column1
 
-let playerScore = 0
-let computerScore = 0
 
 rock.addEventListener("click", () => handleClick("👊"))
 paper.addEventListener("click", () => handleClick("✋"))
-scissors.addEventListener("click", () => handleClick("✌️"))
 
-function handleClick(playerChoice) {
-    const playerChoiceElement = document.createElement("div")
-    playerChoiceElement.classList.add("player")
-    playerChoiceElement.innerText = playerChoice
-    playerChoiceColumn.appendChild(playerChoiceElement)
 
-    const computerChoice = getRandomEmoji()
-    computerScoreElement = document.createElement("div")
-    computerScoreElement.classList.add("computer")
-    computerScoreElement.innerText = computerChoice
-    computerChoiceColumn.appendChild(computerScoreElement)
-
-    checkWinner(playerChoice, computerChoice)
+function handleClick(choiceOfUser) {
+    const choiceOfComputer = getRandomEmoji();
+    appendOwnPickToDom(choiceOfUser);
+    appendComputerPickToDom(choiceOfComputer);
+    const winner = checkWinner(choiceOfUser, choiceOfComputer)
+    appendWinnerToDom(winner);
 }
 
-function getRandomEmoji() {
-    const options = ["👊", "✋", "✌️"]
-    const randomChoice = Math.floor(Math.random() * options.length)
-    return options[randomChoice]
+// function handleClick(choiceOfUser) {
+//     const userChoice = document.createElement("div")
+//     userChoice.classList.add("own-pick")
+//     userChoice.innerText = choiceOfUser
+//     column1.appendChild(userChoice)
+// }
+
+/*deze functie gebruiken om de keuze van jezelf aan de DOM toe te voegen.
+PARAMETERS: keuzen van gebruiker
+Returned: Niks
+*/
+
+function appendOwnPickToDom(choiceOfUser) {
+    const userChoice = document.createElement("div")
+    userChoice.classList.add("own-pick")
+    userChoice.innerText = choiceOfUser
+    column1.appendChild(userChoice)
 }
 
 
-function checkWinner(playerChoice, computerChoice) {
-    let result
-    if( playerChoice === computerChoice) {
-        result = "Tie"
-    } else if(
-        (playerChoice === "👊" && computerChoice === "✌️") ||
-        (playerChoice === "✌️" && computerChoice === "✋") ||
-        (playerChoice === "✋" && computerChoice === "👊") 
-    ) { 
-        result = "You win"
-        playerScore++
-        playerScoreElement.innerText = `Player Score: ${playerScore}`;
 
-
-    } else {
-        result = "You lose"
-        computerScore++
-        computerScoreElement.innerText = `Computer Score: ${computerScore}`;
- 
-    }
-    const resultElement = document.createElement("div");
-    resultElement.innerText = result;
-    winnerColumn.appendChild(resultElement);
-  
-}
