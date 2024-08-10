@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-    <title>Rock Paper Scissors </title>
-
-</head>
-<body>
-    
-    <h2>Computer choice:
-        <span id="computer-choice"></span>
-    </h2>
-    <h2>Your choice:
-        <span id="user-choice"></span>
-    </h2>
-    <h2>Result:
-        <span id="result"></span>
-    </h2>
-
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <div class = "big-box">
+      <div class="big-div">
+        <h1>Rock Paper Scissors</h1>
+        <div class="container">
+          <div>Player <span class="Player=score"></span></div>
+          <div>Computer <span class="Computer-score"></span></div>
+        </div>
+        <div class="choose">Choose your move</div>
+        <div class="moves">Moves left <span>5</span></div>
+        <div class="choices">
+          <button data-rock class="rock">Rock 👊</button>
+          <button data-paper class="paper">Paper ✋</button>
+          <button data-scissors class="scissors">Scissors ✌️</button>
+        </div>
+      </div>
+      <div class="colomn-box">
+        <div class="colomn1">Player choice</div>
+        <div class="colomn2">Computer choice</div>
+        <div class="colomn3">Winner</div>
+      </div>
+    </div>
+  </body>
 </html>
