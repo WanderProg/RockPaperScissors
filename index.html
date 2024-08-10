@@ -12,11 +12,11 @@
       <div class="big-div">
         <h1>Rock Paper Scissors</h1>
         <div class="container">
-          <div class="Player=score"> Player</div>
-          <div class="Computer-score"> Computer</div>
+          <div class="Player=score"> Player <span class="player-score">0</span></div>
+          <div class="Computer-score"> Computer <span class="computer-score">0</span></div>
         </div>
         <div class="choose">Choose your move</div>
-        <div class="moves">Moves left <span>5</span></div>
+        <div class="moves">Moves left <span class="moves-left">5</span></div>
         <div class="choices">
           <button data-rock class="rock">Rock 👊</button>
           <button data-paper class="paper">Paper ✋</button>
@@ -24,9 +24,9 @@
         </div>
       </div>
       <div class="colomn-box">
-        <div class="column1">Player choice</div>
-        <div class="column2">Computer choice</div>
-        <div class="column3">Winner</div>
+        <div class="columndiv"><span class="title">Player</span><div class="column1" data-col></div></div>
+        <div class="columndiv"><span class="title">Computer</span><div class="column2" data-col></div></div>
+        <div class="columndiv"><span class="title">Winner</span><div class="column3" data-col></div></div>
       </div>
     </div>
   </body>

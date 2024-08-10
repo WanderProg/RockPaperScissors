@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    
 }
 
 body {
@@ -57,9 +62,21 @@ button {
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
-    height: 100px;
-
+    min-height: 100px;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    box-shadow: 0px 0px 5px purple;
 }
+
+/* .colomn-box div div {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(62, 62, 218);
+    margin-bottom: 0.5rem;
+    color: rgb(205, 205, 205);
+} */
 
 
 .player-choice {
@@ -78,5 +95,24 @@ button {
     display: flex;
     font-size: 10px;
     margin-bottom: 10px;
+}
 
+
+
+.title {
+    color: white;
+    font-weight: bold;
+    border-bottom: 2px solid yellow;
+    margin-bottom: 0.5rem;
+}
+
+.columndiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.column1,.column2,.column3 {
+    display: flex;
+    flex-direction: column;
 }
